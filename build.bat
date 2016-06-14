@@ -15,6 +15,12 @@ ECHO Path to VS: %_PATH_TO_VS%
 
 SET _ENV_BAT_="%_PATH_TO_VS%..\..\VC\vcvarsall.bat"
 
+IF NOT EXIST %_ENV_BAT_% (
+  ECHO Visual Studio %_VS_VER% not found! Set another VS version by env var _VS_VER.
+  EXIT /B 1
+)
+
+
 ECHO CALL %_ENV_BAT_% 
 CALL %_ENV_BAT_% 
 
