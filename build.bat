@@ -4,9 +4,9 @@ IF "%_PROJ_%"=="" SET _PROJ_="AntiScreenLocker.sln"
 IF "%_CONF_%"=="" SET _CONF_=Release
 
 :: Set here version of VS
-IF "%_VS_VER%"=="" SET _VS_VER=14.0
+IF "%_VS_VER%"=="" SET _VS_VER=12
 
-CALL :GetPathToVisualStudio %_VS_VER%
+CALL :GetPathToVisualStudio %_VS_VER%.0
 ECHO Path to VS: %_PATH_TO_VS%
 
 SET _ENV_BAT_="%_PATH_TO_VS%..\..\VC\vcvarsall.bat"
