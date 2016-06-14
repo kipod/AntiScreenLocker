@@ -4,4 +4,5 @@ ipch/
 *.sdf
 *.opensdf
 *.suo
+*.build.log
 
