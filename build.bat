@@ -1,13 +1,13 @@
 @ECHO OFF
 
-IF "%_PROJ_%"=="" SET _PROJ_="AntiScreenLocker.sln"
+IF "%_PROJ_%"=="" SET _PROJ_=AntiScreenLocker.sln
 IF "%_CONF_%"=="" SET _CONF_=Release
 
 :: Set here version of VS
 :: Visual Studio 2012 - SET _VS_VER=11
 :: Visual Studio 2013 - SET _VS_VER=12
 :: Visual Studio 2015 - SET _VS_VER=14
-IF "%_VS_VER%"=="" SET _VS_VER=11
+IF "%_VS_VER%"=="" SET _VS_VER=14
 
 echo CALL :GetPathToVisualStudio %_VS_VER%.0
 CALL :GetPathToVisualStudio %_VS_VER%.0
@@ -20,12 +20,10 @@ IF NOT EXIST %_ENV_BAT_% (
   EXIT /B 1
 )
 
-
-ECHO CALL %_ENV_BAT_% 
 CALL %_ENV_BAT_% 
-
-:: msbuild %_PROJ_% /property:Configuration=Hybrid /maxcpucount:1
-msbuild %_PROJ_% /property:Configuration=%_CONF_% /m /flp:logfile=%_PROJ_%.build.log %*
+pushd "%~dp0"
+msbuild %_PROJ_% /property:Configuration=%_CONF_% /m /flp:logfile=%_PROJ_%.build.log
+popd
 
 GOTO END
 
